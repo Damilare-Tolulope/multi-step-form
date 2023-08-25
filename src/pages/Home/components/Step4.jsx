@@ -4,7 +4,7 @@ const Step4 = ({ formData }) => {
   return (
     <div>
         
-        <div className="mb-10">
+        <div className="mb-5">
             <h1 className='text-marineblue font-extrabold text-3xl'>Finishing up</h1>
             <p className='text-coolgray mt-2'>Double-check everything looks OK before confirming.</p>
         </div>

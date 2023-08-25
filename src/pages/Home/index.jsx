@@ -105,16 +105,16 @@ const index = () => {
 
 
   return (
-    <div className='bg-white rounded-xl p-5 grid grid-cols-6 w-1/2'>
-        <div className="col-span-2 h-[100%]">
+    <div className='bg-white rounded-xl p-5 grid grid-cols-7 w-2/3 transition linear duration-300'>
+        <div className="col-span-2">
             <Indicator currentStep={currentStep} />
         </div>
-        <div className="col-span-4 px-20 py-5">
+        <div className="col-span-5 px-20 py-5">
             {renderStep()}
 
             {
                 currentStep !== 5 ?
-                    <div className={`w-full ${currentStep !== 1 ? "flex items-center justify-between" : "text-right"} mt-20`}>
+                    <div className={`w-full ${currentStep !== 1 ? "flex items-center justify-between" : "text-right"} mt-10`}>
                         {
                             currentStep !== 1 ?
                                 <Button onClick={handlePreviousStep} className="" isSecondary>Go Back</Button>

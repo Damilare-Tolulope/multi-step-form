@@ -28,11 +28,11 @@ const Indicator = ({ currentStep }) => {
     ]
 
   return (
-    <div className="indicator object-cover p-10 pb-60 rounded-lg">
+    <div className="indicator p-10 pb rounded-lg h-full">
         {
             steps.map(({id, data, step}) => (
                 <div key={id} className='flex items-center gap-5 mb-10'>
-                    <div className={`text-lightgray w-14 h-11 flex items-center justify-center bg-transparent font-bold rounded-full border border-lightgray ${currentStep === id ? "!bg-lightgray text-black" : ""}`}>{id}</div>
+                    <div className={`text-lightgray w-16 h-10 flex items-center justify-center bg-transparent font-bold rounded-full border border-lightgray ${currentStep === id ? "!bg-lightgray text-black" : ""}`}>{id}</div>
                     <div className='w-full'>
                         <p className='text-coolgray'>{step}</p>
                         <p className='text-lightgray font-bold'>{data}</p>

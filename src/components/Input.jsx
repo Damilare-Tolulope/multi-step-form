@@ -9,7 +9,7 @@ const Input = ({ label, value, name, onChange, onBlur, placeholder, type, error 
         </div>
         <input 
             name={name} 
-            className='border border-coolgray rounded-lg mt-2 outline-none w-full transition linear duration-300 p-4 hover:border-purplishblue focus:border-purplishblue placeholder:text-coolgray' 
+            className='border border-coolgray rounded-lg mt-2 outline-none w-full transition linear duration-300 p-4 py-3 hover:border-purplishblue focus:border-purplishblue placeholder:text-coolgray' 
             type={type} 
             value={value} 
             onChange={onChange}

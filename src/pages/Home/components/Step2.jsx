@@ -36,7 +36,7 @@ const Step2 = ({ onChange }) => {
   return (
     <div>
         
-        <div className="mb-10">
+        <div className="mb-5">
             <h1 className='text-marineblue font-extrabold text-3xl'>Select your plan</h1>
             <p className='text-coolgray mt-2'>You have option of monthly or yearly billing.</p>
         </div>
@@ -46,12 +46,12 @@ const Step2 = ({ onChange }) => {
                 data.map(({name, img, price}, index) => {
                     return (
                         <div onClick={() => handleSelectPlan(index)} className={`w-full p-5 rounded-lg cursor-pointer border border-lightgray transition duration-300 hover:border-purplishblue ${selectedPlan === index ? "border-purplishblue": ""}`} key={name}>
-                            <img className='mb-16' src={img} alt={name} />
+                            <img className='mb-14' src={img} alt={name} />
 
                             <div>
                                 <h3 className='font-bold text-marineblue'>{name}</h3>
                                 <p className='text-coolgray'>{price}</p>
-                                {!isMonthly ? <p className='font-bold text-marineblue text-sm mt-3'>2 months free</p> : <></>}
+                                {!isMonthly ? <p className='font-bold text-marineblue text-sm mt-1'>2 months free</p> : <></>}
                             </div>
                         </div>
                     )
@@ -59,7 +59,7 @@ const Step2 = ({ onChange }) => {
             }
         </div>
 
-        <div className="flex mx-auto items-center justify-center gap-5 p-5 bg-magnolia rounded-xl">
+        <div className="flex mx-auto items-center justify-center gap-5 p-3 bg-magnolia rounded-xl">
             <p className={`font-bold ${isMonthly ? "text-marineblue" : "text-coolgray"}`}>Monthly</p>
             <label className="switch">
                 <input type="checkbox" onChange={() => setIsMonthly(!isMonthly)} />
