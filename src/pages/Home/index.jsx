@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import Indicator from './components/Indicator'
-import Step1 from './components/Step1'
 import Button from '../../components/Button';
+import Step1 from './components/Step1'
 import Step3 from './components/Step3';
 import Step2 from './components/Step2';
 import Step4 from './components/Step4';
 import { useFormik } from 'formik';
+import { useToasts } from 'react-toast-notifications'
 import { step1Schema } from '../../utils/Validations';
 import { areAllKeysFilled } from '../../utils/helper';
 
@@ -26,6 +27,8 @@ const index = () => {
         },
     });
 
+    const { addToast } = useToasts();
+
     const initialValues = formData.step1;
 
     const formikStep1 = useFormik({
@@ -38,13 +41,25 @@ const index = () => {
     })
 
     const handleNextStep = () => {
-        if(currentStep === 1 && areAllKeysFilled(formikStep1.values)){
-            formikStep1.handleSubmit()
-            setCurrentStep(currentStep + 1);
+
+        if(currentStep === 1){
+
+            if(areAllKeysFilled(formikStep1.values)){
+                formikStep1.handleSubmit()
+                setCurrentStep(currentStep + 1);
+            }else addToast("Please fill in all details", {appearance: "warning"});
+            
         }else if(currentStep === 2){
+
             if(formData.step2.plan && formData.step2.planData){
                 setCurrentStep(currentStep + 1);
-            }
+            }else addToast("Please select a plan", {appearance: "warning"});
+
+        }else if(currentStep === 3 ){
+
+            if(formData.step3.addOns.length > 0){
+                setCurrentStep(currentStep + 1);
+            }else addToast("Please select one addOn", {appearance: "warning"});
         }
       };
     
@@ -75,9 +90,9 @@ const index = () => {
           case 3:
             return <Step3 formData={formData.step3} onChange={(fieldName, value) => handleFormDataChange('step3', fieldName, value)} />;
           case 4:
-            return <Step4 formData={formData} onChange={handleFormDataChange} />;
+            return <Step4 formData={formData} />;
           default:
-            return <Step1 formData={formData} onChange={handleFormDataChange} />;
+            return <Step1 formData={formikStep1} onChange={(fieldName, value) => handleFormDataChange('step1', fieldName, value)} />;
         }
       };
 

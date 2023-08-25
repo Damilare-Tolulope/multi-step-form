@@ -1,6 +1,8 @@
 import React from 'react'
 
-const Step4 = () => {
+const Step4 = ({ formData }) => {
+    console.log(formData);
+
   return (
     <div>
         
@@ -12,26 +14,26 @@ const Step4 = () => {
         <div className="mb-10 bg-lightgray p-5 rounded-lg">
             <div className="border-b-2 border-coolgray py-5 mb-5 flex items-center justify-between">
                 <div className="">
-                    <p className='text-marineblue'>Arcade (Monthly)</p>
-                    <p className='text-purplishblue text-md font-bold cursor-pointer'>Change</p>
+                    <p className='text-marineblue'>{formData?.step2?.planData?.name} (<span className="capitalize">{formData?.step2?.plan}</span>)</p>
+                    <p className='text-purplishblue hover:underline text-md font-bold cursor-pointer'>Change</p>
                 </div>
-                <p>$9/mo</p>
+                <p>{formData?.step2?.planData?.price}</p>
             </div>
             <div>
-                <div className="flex items-center justify-between mb-2">
-                    <p>Online Service</p>
-                    <p>$51/mo</p>
-                </div>
-                <div className="flex items-center justify-between">
-                    <p>Larger storage</p>
-                    <p>$52/mo</p>
-                </div>
+                {
+                    formData?.step3?.addOns.map((addOn, index) => (
+                        <div key={index} className="flex items-center justify-between mb-2">
+                            <p>{addOn.type}</p>
+                            <p>{addOn.price}</p>
+                        </div>
+                    ))
+                }
             </div>
         </div>
 
         <div className='p-5 flex items-center justify-between'>
-            <p>Total (per month)</p>
-            <p className='text-purplishblue text-md font-bold'>+$12/mo</p>
+            <p>Total (per {formData?.step2?.plan === "monthly" ? "month" : "year"})</p>
+            <p className='text-purplishblue text-md font-bold'>+$12/{formData?.step2?.plan === "monthly" ? "mo" : "yr"}</p>
         </div>
 
     </div>

@@ -24,17 +24,17 @@ export const monthlyData = [
 export const yearlyData = [
     {
         name: "Arcade",
-        price: "$90/mo",
+        price: "$90/yr",
         img: arcade,
     },
     {
         name: "Advance",
-        price: "$120/mo",
+        price: "$120/yr",
         img: advance,
     },
     {
         name: "Pro",
-        price: "$150/mo",
+        price: "$150/yr",
         img: pro,
     },
 ]
@@ -61,16 +61,16 @@ export const yearlyAddOns = [
     {
         type: 'Online service',
         info: 'Access to multiplayer games',
-        price: '+$10/mo',
+        price: '+$10/yr',
     },
     {
         type: 'Larger storage',
         info: 'Extra 1TB of cloud save',
-        price: '+$20/mo',
+        price: '+$20/yr',
     },
     {
         type: 'Customizable profile',
         info: 'Custom theme on your profile',
-        price: '+$20/mo',
+        price: '+$20/yr',
     },
 ]
