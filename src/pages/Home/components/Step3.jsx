@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { addOns } from '../../../data'
+import { addOns, yearlyAddOns } from '../../../data'
 
-const Step3 = ({ onChange }) => {
+const Step3 = ({ formData, onChange }) => {
     const [checkedItems, setCheckedItems] = useState([]);
+    const [data, setData] = useState(addOns)
 
     const handleCheckboxChange = (item) => {
         if (checkedItems.includes(item)) {
@@ -12,7 +13,12 @@ const Step3 = ({ onChange }) => {
         }
     };
 
-    useEffect(() => onChange('addOns', checkedItems), [checkedItems])
+    useEffect(() => {
+        if(formData?.step2?.plan === "montly") setData(addOns);
+        else setData(yearlyAddOns);
+    }, [data]);
+
+    useEffect(() => onChange('addOns', checkedItems), [checkedItems]);
 
   return (
     <div>
@@ -24,7 +30,7 @@ const Step3 = ({ onChange }) => {
 
         <div>
             {
-                addOns.map((addOn, index) => (
+                data.map((addOn, index) => (
                     <label key={index} className={`w-full flex mb-5 gap-8 p-5 rounded-lg cursor-pointer border border-lightgray transition duration-300 hover:border-purplishblue`}>
                         <input type="checkbox" checked={checkedItems.includes(addOn)} onChange={() => handleCheckboxChange(addOn)} className='scale-150' />
                         <div className="flex items-center justify-between w-full">

@@ -9,6 +9,7 @@ import { useFormik } from 'formik';
 import { useToasts } from 'react-toast-notifications'
 import { step1Schema } from '../../utils/Validations';
 import { areAllKeysFilled } from '../../utils/helper';
+import ThankYou from './components/ThankYou';
 
 const index = () => {
     const [currentStep, setCurrentStep] = useState(1);
@@ -78,7 +79,11 @@ const index = () => {
       };
 
       const handleConfirmOrder = () => {
-        console.log(formData)
+        addToast("Order Confirmed", {appearance: 'success'});
+        
+        setTimeout(() => {
+            setCurrentStep(currentStep + 1);
+        }, 2000);
       }
 
     const renderStep = () => {
@@ -91,6 +96,8 @@ const index = () => {
             return <Step3 formData={formData.step3} onChange={(fieldName, value) => handleFormDataChange('step3', fieldName, value)} />;
           case 4:
             return <Step4 formData={formData} />;
+          case 5:
+            return <ThankYou />;
           default:
             return <Step1 formData={formikStep1} onChange={(fieldName, value) => handleFormDataChange('step1', fieldName, value)} />;
         }
@@ -105,20 +112,25 @@ const index = () => {
         <div className="col-span-4 px-20 py-5">
             {renderStep()}
 
-            <div className={`w-full ${currentStep !== 1 ? "flex items-center justify-between" : "text-right"} mt-20`}>
-                {
-                    currentStep !== 1 ?
-                        <Button onClick={handlePreviousStep} className="" isSecondary>Go Back</Button>
-                    :
-                        <></>
-                }
-                {
-                    currentStep === 4 ?
-                        <Button onClick={handleConfirmOrder} className="">Confirm</Button>
-                    :
-                        <Button onClick={handleNextStep} className="">Next Step</Button>
-                }
-            </div>
+            {
+                currentStep !== 5 ?
+                    <div className={`w-full ${currentStep !== 1 ? "flex items-center justify-between" : "text-right"} mt-20`}>
+                        {
+                            currentStep !== 1 ?
+                                <Button onClick={handlePreviousStep} className="" isSecondary>Go Back</Button>
+                            :
+                                <></>
+                        }
+                        {
+                            currentStep === 4 ?
+                                <Button onClick={handleConfirmOrder} className="">Confirm</Button>
+                            :
+                                <Button onClick={handleNextStep} className="">Next Step</Button>
+                        }
+                    </div>
+                :
+                    <></>
+            }
         </div>
     </div>
   )
