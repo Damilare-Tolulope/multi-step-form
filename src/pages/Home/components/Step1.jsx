@@ -1,5 +1,6 @@
 import React from 'react'
 import Input from '../../../components/Input'
+import WithScrollToTop from '../../../components/WithScrollToTop'
 
 const Step1 = ({ formData, onChange }) => {
   return (
@@ -46,4 +47,4 @@ const Step1 = ({ formData, onChange }) => {
   )
 }
 
-export default Step1
+export default WithScrollToTop(Step1)

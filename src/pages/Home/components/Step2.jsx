@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { monthlyData, yearlyData } from '../../../data';
+import WithScrollToTop from '../../../components/WithScrollToTop';
 
 const Step2 = ({ onChange }) => {
     const [isMonthly, setIsMonthly] = useState(true);
@@ -71,4 +72,4 @@ const Step2 = ({ onChange }) => {
   )
 }
 
-export default Step2
+export default WithScrollToTop(Step2)

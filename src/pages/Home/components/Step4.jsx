@@ -1,4 +1,5 @@
 import React from 'react'
+import WithScrollToTop from '../../../components/WithScrollToTop'
 
 const Step4 = ({ formData }) => {
   return (
@@ -38,4 +39,4 @@ const Step4 = ({ formData }) => {
   )
 }
 
-export default Step4
+export default WithScrollToTop(Step4)

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { addOns, yearlyAddOns } from '../../../data'
+import WithScrollToTop from '../../../components/WithScrollToTop';
 
 const Step3 = ({ formData, onChange }) => {
     const [checkedItems, setCheckedItems] = useState([]);
@@ -49,4 +50,4 @@ const Step3 = ({ formData, onChange }) => {
   )
 }
 
-export default Step3
+export default WithScrollToTop(Step3)
