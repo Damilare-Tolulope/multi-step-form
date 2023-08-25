@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import './App.css'
+import Home from './pages/Home'
 
-function App() {
+const App = () => {
   return (
-    <p>Hello World</p>
+    <div className='bg-coolgray h-screen overflow-y-auto flex items-center justify-center'>
+      <Home />
+    </div>
   )
 }
 
-export default App
+export default App;
