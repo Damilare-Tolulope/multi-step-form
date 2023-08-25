@@ -112,28 +112,52 @@ const index = () => {
         <div className="lg:hidden block">
             <MiniIndicator currentStep={currentStep} />
         </div>
-        <div className="lg:col-span-5 px-5 md:px-10 lg:px-20 py-5 z-50 left-0 right-0 mx-auto top-24 lg:top-0 w-10/12 md:w-2/3 lg:w-full bg-white rounded-xl absolute lg:relative">
+        <div className="h-[500px] md:h-[600px] lg:h-auto overflow-y-auto lg:col-span-5 px-5 md:px-10 lg:px-20 py-5 z-50 left-0 right-0 mx-auto top-24 lg:top-0 w-10/12 md:w-2/3 lg:w-full bg-white rounded-xl absolute lg:relative">
             {renderStep()}
 
-            {
-                currentStep !== 5 ?
-                    <div className={`w-full ${currentStep !== 1 ? "flex items-center justify-between" : "text-right"} mt-10`}>
-                        {
-                            currentStep !== 1 ?
-                                <Button onClick={handlePreviousStep} className="" isSecondary>Go Back</Button>
-                            :
-                                <></>
-                        }
-                        {
-                            currentStep === 4 ?
-                                <Button onClick={handleConfirmOrder} className="">Confirm</Button>
-                            :
-                                <Button onClick={handleNextStep} className="">Next Step</Button>
-                        }
-                    </div>
-                :
-                    <></>
-            }
+            <div className='hidden lg:block'>
+                {
+                    currentStep !== 5 ?
+                        <div className={`w-full ${currentStep !== 1 ? "flex items-center justify-between" : "text-right"} mt-10`}>
+                            {
+                                currentStep !== 1 ?
+                                    <Button onClick={handlePreviousStep} className="" isSecondary>Go Back</Button>
+                                :
+                                    <></>
+                            }
+                            {
+                                currentStep === 4 ?
+                                    <Button onClick={handleConfirmOrder} className="">Confirm</Button>
+                                :
+                                    <Button onClick={handleNextStep} className="">Next Step</Button>
+                            }
+                        </div>
+                    :
+                        <></>
+                }
+            </div>
+            <div className='fixed bottom-0 left-0 bg-white w-full lg:hidden px-7'>
+                {
+                    currentStep !== 5 ?
+                        <div className={`w-full ${currentStep !== 1 ? "flex items-center justify-between" : "text-right"} py-2`}>
+                            {
+                                currentStep !== 1 ?
+                                    <Button onClick={handlePreviousStep} className="" isSecondary>Go Back</Button>
+                                :
+                                    <></>
+                            }
+                            {
+                                currentStep === 4 ?
+                                    <Button onClick={handleConfirmOrder} className="">Confirm</Button>
+                                :
+                                    <Button onClick={handleNextStep} className="">Next Step</Button>
+                            }
+                        </div>
+                    :
+                        <></>
+                }
+            </div>
+
         </div>
     </div>
   )
