@@ -13,27 +13,33 @@ const Step1 = ({ formData, onChange }) => {
         <form className="">
             <Input 
                 label="Name"
-                value={formData.name}
-                onChange={(e) => onChange('name', e.target.value)}
+                value={formData.values.name}
+                onChange={formData.handleChange}
+                onBlur={formData.onBlur}
+                error={formData.errors.name}
                 placeholder="e.g Stephen King"
                 type="text"
                 name="name"
             />
             <Input 
                 label="Email Address"
-                value={formData.email}
-                onChange={(e) => onChange('email', e.target.value)}
+                value={formData.values.email}
+                onChange={formData.handleChange}
+                onBlur={formData.onBlur}
+                error={formData.errors.email}
                 placeholder="e.g stephenking@lorem.com"
                 type="email"
                 name="email"
             />
             <Input 
                 label="Phone Number"
-                value={formData.phone_number}
-                onChange={(e) => onChange('phone_number', e.target.value)}
+                value={formData.values.phone_number}
+                onChange={formData.handleChange}
+                onBlur={formData.onBlur}
+                error={formData.errors.phone_number}
                 placeholder="e.g +1 234 5678"
                 type="text"
-                name="phone"
+                name="phone_number"
             />
         </form>
     </div>

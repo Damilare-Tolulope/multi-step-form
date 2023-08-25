@@ -1,16 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { monthlyData, yearlyData } from '../../../data';
 
-const Step2 = () => {
+const Step2 = ({ onChange }) => {
     const [isMonthly, setIsMonthly] = useState(true);
     const [data, setData] = useState(monthlyData);
-    const [selectedPlan, setSelectedPlan] = useState(0);
+    const [selectedPlan, setSelectedPlan] = useState(null);
 
+    const handleSelectPlan = (index) => {
+        setSelectedPlan(index);
+
+        if(isMonthly) {
+            onChange('plan', "monthly")
+            onChange('planData', monthlyData[index])
+        }else {
+            onChange('plan', "yearly")
+            onChange('planData', yearlyData[index])
+        }
+
+    }
+    
     useEffect(() => {
-        if(isMonthly) setData(monthlyData);
-        else setData(yearlyData);
-    }, [isMonthly])
+        if(isMonthly) {
+            setData(monthlyData);
+            onChange('plan', "monthly")
+            onChange('planData', monthlyData[selectedPlan])
+        }
+        else {
+            setData(yearlyData);
+            onChange('plan', "yearly")
+            onChange('planData', yearlyData[selectedPlan])
+        } 
+    }, [isMonthly]);
 
+    
   return (
     <div>
         
@@ -23,12 +45,13 @@ const Step2 = () => {
             {
                 data.map(({name, img, price}, index) => {
                     return (
-                        <div onClick={() => setSelectedPlan(index)} className={`w-full p-5 rounded-lg cursor-pointer border border-lightgray transition duration-300 hover:border-purplishblue ${selectedPlan === index ? "border-purplishblue": ""}`} key={name}>
+                        <div onClick={() => handleSelectPlan(index)} className={`w-full p-5 rounded-lg cursor-pointer border border-lightgray transition duration-300 hover:border-purplishblue ${selectedPlan === index ? "border-purplishblue": ""}`} key={name}>
                             <img className='mb-16' src={img} alt={name} />
 
                             <div>
                                 <h3 className='font-bold text-marineblue'>{name}</h3>
                                 <p className='text-coolgray'>{price}</p>
+                                {!isMonthly ? <p className='font-bold text-marineblue text-sm mt-3'>2 months free</p> : <></>}
                             </div>
                         </div>
                     )

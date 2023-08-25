@@ -5,6 +5,9 @@ import Button from '../../components/Button';
 import Step3 from './components/Step3';
 import Step2 from './components/Step2';
 import Step4 from './components/Step4';
+import { useFormik } from 'formik';
+import { step1Schema } from '../../utils/Validations';
+import { areAllKeysFilled } from '../../utils/helper';
 
 const index = () => {
     const [currentStep, setCurrentStep] = useState(1);
@@ -23,8 +26,26 @@ const index = () => {
         },
     });
 
+    const initialValues = formData.step1;
+
+    const formikStep1 = useFormik({
+        initialValues,
+        onSubmit: (values) => {
+            setFormData({...formData, step1: values})
+        },
+        validateOnBlur: true,
+        validationSchema: step1Schema,
+    })
+
     const handleNextStep = () => {
-        setCurrentStep(currentStep + 1);
+        if(currentStep === 1 && areAllKeysFilled(formikStep1.values)){
+            formikStep1.handleSubmit()
+            setCurrentStep(currentStep + 1);
+        }else if(currentStep === 2){
+            if(formData.step2.plan && formData.step2.planData){
+                setCurrentStep(currentStep + 1);
+            }
+        }
       };
     
       const handlePreviousStep = () => {
@@ -48,7 +69,7 @@ const index = () => {
     const renderStep = () => {
         switch (currentStep) {
           case 1:
-            return <Step1 formData={formData.step1} onChange={(fieldName, value) => handleFormDataChange('step1', fieldName, value)} />;
+            return <Step1 formData={formikStep1} onChange={(fieldName, value) => handleFormDataChange('step1', fieldName, value)} />;
           case 2:
             return <Step2 formData={formData.step2} onChange={(fieldName, value) => handleFormDataChange('step2', fieldName, value)} />;
           case 3:

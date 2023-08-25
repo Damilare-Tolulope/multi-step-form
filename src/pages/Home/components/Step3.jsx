@@ -14,7 +14,7 @@ const Step3 = () => {
         <div>
             {
                 addOns.map(({info, price, type}, index) => (
-                    <label className={`w-full flex mb-5 gap-8 p-5 rounded-lg cursor-pointer border border-lightgray transition duration-300 hover:border-purplishblue`}>
+                    <label key={index} className={`w-full flex mb-5 gap-8 p-5 rounded-lg cursor-pointer border border-lightgray transition duration-300 hover:border-purplishblue`}>
                         <input type="checkbox" className='scale-150' />
                         <div className="flex items-center justify-between w-full">
                             <div className="">
