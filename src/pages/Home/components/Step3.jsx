@@ -24,21 +24,21 @@ const Step3 = ({ formData, onChange }) => {
     <div>
         
         <div className="mb-5">
-            <h1 className='text-marineblue font-extrabold text-3xl'>Pick add-ons</h1>
-            <p className='text-coolgray mt-2'>Add-ons help enhance your gaming experience.</p>
+            <h1 className='text-marineblue font-extrabold text-xl md:text-3xl'>Pick add-ons</h1>
+            <p className='text-coolgray mt-2 text-sm md:text-base'>Add-ons help enhance your gaming experience.</p>
         </div>
 
         <div>
             {
                 data.map((addOn, index) => (
-                    <label key={index} className={`w-full flex mb-5 gap-8 p-5 rounded-lg cursor-pointer border border-lightgray transition duration-300 hover:border-purplishblue`}>
-                        <input type="checkbox" checked={checkedItems.includes(addOn)} onChange={() => handleCheckboxChange(addOn)} className='scale-150' />
+                    <label key={index} className={`w-full flex mb-5 gap-3 md:gap-8 p-2 md:p-5 rounded-lg cursor-pointer border border-lightgray transition duration-300 hover:border-purplishblue`}>
+                        <input type="checkbox" checked={checkedItems.includes(addOn)} onChange={() => handleCheckboxChange(addOn)} className='scale-110 md:scale-150' />
                         <div className="flex items-center justify-between w-full">
-                            <div className="">
+                            <div className="text-sm md:text-base">
                                 <h3 className='font-bold text-marineblue'>{addOn.type}</h3>
-                                <p className='text-coolgray'>{addOn.info}</p>
+                                <p className='text-coolgray text-xs md:text-base'>{addOn.info}</p>
                             </div>
-                            <p>{addOn.price}</p>
+                            <p className='text-xs md:text-base'>{addOn.price}</p>
                         </div>
                     </label>
                 ))

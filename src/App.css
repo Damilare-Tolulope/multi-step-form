@@ -12,6 +12,10 @@
   background-image: url('./assets/images/bg-sidebar-desktop.svg');
   background-size: cover;
 }
+.indicatorMini {
+  background-image: url('./assets/images/bg-sidebar-mobile.svg');
+  background-size: cover;
+}
 
 .switch {
   position: relative;
@@ -77,4 +81,20 @@ input:checked + .slider:before {
 
 label > input[type="checkbox"]:checked {
   border-color: hsl(243, 100%, 62%);
+}
+
+@media screen and (max-width: 768px){
+  .switch {
+    width: 50px;
+    height: 23px;
+  }
+  .slider:before {
+    height: 15px;
+    width: 15px;
+  }
+  input:checked + .slider:before {
+    -webkit-transform: translateX(25px);
+    -ms-transform: translateX(25px);
+    transform: translateX(25px);
+  }
 }

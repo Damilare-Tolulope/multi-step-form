@@ -5,11 +5,11 @@ const Step4 = ({ formData }) => {
     <div>
         
         <div className="mb-5">
-            <h1 className='text-marineblue font-extrabold text-3xl'>Finishing up</h1>
-            <p className='text-coolgray mt-2'>Double-check everything looks OK before confirming.</p>
+            <h1 className='text-marineblue font-extrabold text-xl md:text-3xl'>Finishing up</h1>
+            <p className='text-coolgray mt-2 text-sm md:text-base'>Double-check everything looks OK before confirming.</p>
         </div>
 
-        <div className="mb-10 bg-lightgray p-5 rounded-lg">
+        <div className="mb-5 md:mb-10 bg-lightgray p-5 rounded-lg text-sm md:text-base">
             <div className="border-b-2 border-coolgray py-5 mb-5 flex items-center justify-between">
                 <div className="">
                     <p className='text-marineblue'>{formData?.step2?.planData?.name} (<span className="capitalize">{formData?.step2?.plan}</span>)</p>

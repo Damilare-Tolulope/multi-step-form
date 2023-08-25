@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Indicator from './components/Indicator'
+import Indicator, { MiniIndicator } from './components/Indicator'
 import Button from '../../components/Button';
 import Step1 from './components/Step1'
 import Step3 from './components/Step3';
@@ -105,11 +105,14 @@ const index = () => {
 
 
   return (
-    <div className='bg-white rounded-xl p-5 grid grid-cols-7 w-2/3 transition linear duration-300'>
-        <div className="col-span-2">
+    <div className='lg:bg-white bg-transparent relative lg:rounded-xl lg:p-5 lg:grid lg:grid-cols-7 w-full lg:w-2/3 transition linear duration-300'>
+        <div className="lg:col-span-2 hidden lg:block">
             <Indicator currentStep={currentStep} />
         </div>
-        <div className="col-span-5 px-20 py-5">
+        <div className="lg:hidden block">
+            <MiniIndicator currentStep={currentStep} />
+        </div>
+        <div className="lg:col-span-5 px-5 md:px-10 lg:px-20 py-5 z-50 left-0 right-0 mx-auto top-24 lg:top-0 w-10/12 md:w-2/3 lg:w-full bg-white rounded-xl absolute lg:relative">
             {renderStep()}
 
             {

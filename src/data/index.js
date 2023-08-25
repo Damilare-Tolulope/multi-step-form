@@ -3,6 +3,29 @@ import arcade from '../assets/icons/icon-arcade.svg'
 import pro from '../assets/icons/icon-pro.svg'
 import advance from '../assets/icons/icon-advanced.svg'
 
+export const steps = [
+    {
+        id: 1,
+        step: "STEP 1",
+        data: "YOUR INFO"
+    },
+    {
+        id: 2,
+        step: "STEP 2",
+        data: "SELECT PLAN"
+    },
+    {
+        id: 3,
+        step: "STEP 3",
+        data: "ADD-ONS"
+    },
+    {
+        id: 4,
+        step: "STEP 4",
+        data: "SUMMARY"
+    },
+]
+
 export const monthlyData = [
     {
         name: "Arcade",

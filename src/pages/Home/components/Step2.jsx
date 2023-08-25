@@ -37,20 +37,20 @@ const Step2 = ({ onChange }) => {
     <div>
         
         <div className="mb-5">
-            <h1 className='text-marineblue font-extrabold text-3xl'>Select your plan</h1>
-            <p className='text-coolgray mt-2'>You have option of monthly or yearly billing.</p>
+            <h1 className='text-marineblue font-extrabold text-xl md:text-3xl'>Select your plan</h1>
+            <p className='text-coolgray mt-2 text-sm md:text-base'>You have option of monthly or yearly billing.</p>
         </div>
 
-        <div className="flex items-start justify-between gap-5 mb-10">
+        <div className="flex flex-col md:flex-row items-start justify-between gap-5 mb-10">
             {
                 data.map(({name, img, price}, index) => {
                     return (
-                        <div onClick={() => handleSelectPlan(index)} className={`w-full p-5 rounded-lg cursor-pointer border border-lightgray transition duration-300 hover:border-purplishblue ${selectedPlan === index ? "border-purplishblue": ""}`} key={name}>
-                            <img className='mb-14' src={img} alt={name} />
+                        <div onClick={() => handleSelectPlan(index)} className={`w-full flex md:block gap-5 md:p-5 p-2 rounded-lg cursor-pointer border border-lightgray transition duration-300 hover:border-purplishblue ${selectedPlan === index ? "border-purplishblue": ""}`} key={name}>
+                            <img className='md:mb-14' src={img} alt={name} />
 
                             <div>
                                 <h3 className='font-bold text-marineblue'>{name}</h3>
-                                <p className='text-coolgray'>{price}</p>
+                                <p className='text-coolgray text-sm md:text-base'>{price}</p>
                                 {!isMonthly ? <p className='font-bold text-marineblue text-sm mt-1'>2 months free</p> : <></>}
                             </div>
                         </div>

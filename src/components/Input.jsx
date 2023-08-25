@@ -3,7 +3,7 @@ import React from 'react'
 const Input = ({ label, value, name, onChange, onBlur, placeholder, type, error }) => {
   return (
     <div className='mb-5 text-marineblue'>
-        <div className="flex items-center justify-between">
+        <div className="flex md:items-center justify-between flex-col md:flex-row">
             <label className='font-bold block'>{label}</label>
             {error && <p className='text-[red] text-sm'>{error}</p>}
         </div>

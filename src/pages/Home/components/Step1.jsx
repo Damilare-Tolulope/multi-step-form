@@ -6,8 +6,8 @@ const Step1 = ({ formData, onChange }) => {
     <div className=''>
 
         <div className="mb-5">
-            <h1 className='text-marineblue font-extrabold text-3xl'>Personal info</h1>
-            <p className='text-coolgray mt-2'>Please provide your name, email address and phone number</p>
+            <h1 className='text-marineblue font-extrabold text-xl md:text-3xl'>Personal info</h1>
+            <p className='text-coolgray mt-2 text-sm md:text-base'>Please provide your name, email address and phone number</p>
         </div>
 
         <form className="">
