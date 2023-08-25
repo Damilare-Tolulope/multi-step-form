@@ -1,8 +1,6 @@
 import React from 'react'
 
 const Step4 = ({ formData }) => {
-    console.log(formData);
-
   return (
     <div>
         
